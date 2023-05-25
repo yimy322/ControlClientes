@@ -14,10 +14,10 @@ import java.util.List;
  */
 public interface ClienteDao {
     
-    int insert(Cliente cliente) throws SQLException;
-    int update(Cliente cliente) throws SQLException;
-    int delete(Cliente cliente) throws SQLException;
-    List<Cliente> select() throws SQLException;
-    Cliente selectById(Cliente cliente) throws SQLException;
+    int insert(Cliente cliente);
+    int update(Cliente cliente);
+    int delete(Cliente cliente);
+    List<Cliente> select();
+    Cliente selectById(Cliente cliente);
     
 }

@@ -3,6 +3,8 @@ package datos;
 import dominio.Cliente;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +19,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente =?";
 
     @Override
-    public int insert(Cliente cliente) throws SQLException {
+    public int insert(Cliente cliente){
 
         Connection conn = null;
 
@@ -36,6 +38,8 @@ public class ClienteDaoJDBC implements ClienteDao {
 
             rows = stmt.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
         } finally {
 
             try {
@@ -54,7 +58,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     }
 
     @Override
-    public int update(Cliente cliente) throws SQLException {
+    public int update(Cliente cliente){
         Connection conn = null;
 
         PreparedStatement stmt = null;
@@ -73,6 +77,8 @@ public class ClienteDaoJDBC implements ClienteDao {
             
             rows = stmt.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
         } finally {
 
             try {
@@ -90,7 +96,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     }
 
     @Override
-    public int delete(Cliente cliente) throws SQLException {
+    public int delete(Cliente cliente){
         
         Connection conn = null;
 
@@ -105,6 +111,8 @@ public class ClienteDaoJDBC implements ClienteDao {
             
             rows = stmt.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
         } finally {
 
             try {
@@ -123,7 +131,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     }
 
     @Override
-    public List<Cliente> select() throws SQLException {
+    public List<Cliente> select(){
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -169,7 +177,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     }
 
     @Override
-    public Cliente selectById(Cliente cliente) throws SQLException {
+    public Cliente selectById(Cliente cliente){
 
         Connection conn = null;
         PreparedStatement stmt = null;
