@@ -21,16 +21,16 @@ public class Conexion {
         if (dataSource==null) {
             dataSource = new BasicDataSource();
             
-            ds.setUrl(JDBC_URL);
-            ds.setUsername(JDBC_USER);
-            ds.setPassword(JDBC_PASSWORD);
+            dataSource.setUrl(JDBC_URL);
+            dataSource.setUsername(JDBC_USER);
+            dataSource.setPassword(JDBC_PASSWORD);
             
-            ds.setInitialSize(50);
+            dataSource.setInitialSize(50);
         }
         
         
         
-        return ds;
+        return dataSource;
         
     } 
     
