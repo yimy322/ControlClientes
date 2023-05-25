@@ -14,15 +14,21 @@ public class Conexion {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "123456";
     
+    private static BasicDataSource dataSource;
+    
     public static DataSource getDataSource(){
         
-        BasicDataSource ds = new BasicDataSource();
+        if (dataSource==null) {
+            dataSource = new BasicDataSource();
+            
+            ds.setUrl(JDBC_URL);
+            ds.setUsername(JDBC_USER);
+            ds.setPassword(JDBC_PASSWORD);
+            
+            ds.setInitialSize(50);
+        }
         
-        ds.setUrl(JDBC_URL);
-        ds.setUsername(JDBC_USER);
-        ds.setPassword(JDBC_PASSWORD);
         
-        ds.setInitialSize(50);
         
         return ds;
         

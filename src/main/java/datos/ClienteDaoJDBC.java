@@ -107,7 +107,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setString(1, cliente.getNombre());
+            stmt.setInt(1, cliente.getIdCliente());
             
             rows = stmt.executeUpdate();
 
@@ -187,7 +187,7 @@ public class ClienteDaoJDBC implements ClienteDao {
             stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
             stmt.setInt(1, cliente.getIdCliente());
             rs = stmt.executeQuery();
-            rs.absolute(1);//Nos posicionamos en el primer registro devuelto
+            rs.next();//Nos posicionamos en el primer registro devuelto
             String nombre = rs.getString("nombre");
             String apellido = rs.getString("apellido");
             String email = rs.getString("email");
